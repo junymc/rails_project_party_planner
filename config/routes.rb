@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'welcome#root'
+  get '/login' => 'sessions#login'
   
   resources :parties do
     resources :invites

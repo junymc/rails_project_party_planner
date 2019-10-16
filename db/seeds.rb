@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+bparty = Party.create(name: "B Party", description: "Kai's 7th birthday party", location: "x-trampoline park", date_time: DateTime.strptime("09/28/2019 12:00", "%m/%d/%Y %H:%M"), dress_code: "comfortable pants and shirts")
+
+kai = Host.create(name: "Kai")
+
+bparty.host = kai

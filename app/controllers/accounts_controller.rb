@@ -5,11 +5,11 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.create(account_params)
-    binding.pry
-    if @account.host
-      redirect_to home_path
-    elsif @account.guest
-      redirect_to guest_path
+    # binding.pry
+    if @host
+      redirect_to new_host_path
+    elsif @guest
+      redirect_to new_guest_path
     else
       redirect_to root_path
     end

@@ -1,0 +1,9 @@
+<h2>Party list</h2>
+<% @parties.each do |party| %>
+  <%= party.name %>
+  <%= party.description %>
+  <%= party.location %>
+  <%= party.date_time %>
+  <%= party.dress_code %>
+  <%= party.host %>
+<% end %>
