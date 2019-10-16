@@ -1,6 +1,6 @@
 class Account < ApplicationRecord
     has_secure_password
-    belongs_to :accountable, :polymorphic => true
+    belongs_to :accountable, :polymorphic => true, optional: true
 
     validates :email, uniqueness: true
     validates :email, :password, presence: true
