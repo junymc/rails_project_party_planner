@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root to: 'welcome#root'
   
   resources :parties do
     resources :invites
@@ -7,8 +9,7 @@ Rails.application.routes.draw do
     resources :invites
   end
   resources :hosts
-  resources :account
-  get '/signup' => 'accounts#new'
+  resources :accounts
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
