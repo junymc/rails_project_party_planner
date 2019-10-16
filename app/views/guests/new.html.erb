@@ -1,2 +1,18 @@
-<h1>Guests#new</h1>
-<p>Find me in app/views/guests/new.html.erb</p>
+<h1>New Guest</h1>
+<p>Please fill out the form below to complete the sign up process.</p>
+
+<%= form_with(model: @guest, local: true) do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<br>
+
+<%= f.label :age, "Age(number)" %>
+<%= f.text_field :age %>
+<br>
+
+<%= f.label :gender %>
+<%= f.select :from, [ 'Male','Female' ], :prompt => 'Gender' %>
+<br>
+
+<%= f.submit "Creat an account as a host" %>
+<% end %>

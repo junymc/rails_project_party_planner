@@ -17,7 +17,8 @@ class SessionsController < ApplicationController
     end
 
     def logout
-        Account.find(session[:id]).destroy
+        session[:id] = nil
+        flash[:success] = "Goodbye!"
         redirect_to root_path
     end
 

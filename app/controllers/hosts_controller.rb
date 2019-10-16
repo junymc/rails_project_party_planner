@@ -5,6 +5,7 @@ class HostsController < ApplicationController
 
   def create
     @host = Host.new(host_params)
+    # binding.pry
     if @host.save
       session[:id] = @host.id
       redirect_to parties_path
