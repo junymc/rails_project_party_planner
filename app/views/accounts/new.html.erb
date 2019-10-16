@@ -1,2 +1,15 @@
-<h1>Accounts#new</h1>
-<p>Find me in app/views/accounts/new.html.erb</p>
+<h1>New Account</h1>
+
+<%= form_with(model: @account) do |f| %>
+<div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password_digest %>
+  </div>
+
+    <%= f.submit %>
+  <% end %>
