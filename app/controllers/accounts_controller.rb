@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  def new
+  def signup
   end
 
   def create

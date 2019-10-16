@@ -1,25 +1,14 @@
 Rails.application.routes.draw do
-  get 'invites/new'
-  get 'invites/create'
-  get 'invites/edit'
-  get 'invites/update'
-  get 'invites/delete'
-  get 'parties/new'
-  get 'parties/create'
-  get 'parties/edit'
-  get 'parties/update'
-  get 'parties/delete'
-  get 'guests/new'
-  get 'guests/create'
-  get 'guests/edit'
-  get 'guests/update'
-  get 'guests/delete'
-  get 'hosts/new'
-  get 'hosts/create'
-  get 'hosts/edit'
-  get 'hosts/update'
-  get 'hosts/delete'
-  get 'accounts/new'
-  get 'accounts/create'
+  
+  resources :parties do
+    resources :invites
+  end
+  resources :guests do
+    resources :invites
+  end
+  resources :hosts
+  resources :account
+  get '/signup' => 'accounts#new'
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
