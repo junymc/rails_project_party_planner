@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
 			if @account.accountable_type == "Host"
             	redirect_to host_path(@account.accountable)
 			else
-				redirect_to guest_path(@account.accountable)
+                redirect_to guest_path(@account.accountable)
+            end
         else
             flash[:danger] = "Login credentials were not found, please try again."
             redirect_to login_path

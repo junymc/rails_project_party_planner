@@ -5,18 +5,20 @@
     Are you sign up as a host or a guest?
     <br />
     <%= f.label :host %>
-    <%= f.radio_button :user_type, 'Host' %>
+    <%= f.radio_button :accountable_type, 'Host' %>
     <%= f.label :guest %>
-    <%= f.radio_button :user_type, 'Guest' %>
+    <%= f.radio_button :accountable_type, 'Guest' %>
 </div>
 <br>
+<div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email %>
-    <br>
+  </div>
 
+  <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password_digest %>
-
+    <%= f.password_field :password %>
+  </div>
 
     <%= f.submit %>
   <% end %>

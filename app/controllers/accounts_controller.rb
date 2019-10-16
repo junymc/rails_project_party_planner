@@ -8,10 +8,10 @@ class AccountsController < ApplicationController
     # binding.pry
     if @account.save
       session[:id] = @account.id
-      session[:user_type] = params[:account][:user_type]
-      if params[:account][:user_type] == "Host"
+      session[:accountable_type] = params[:account][:accountable_type]
+      if params[:account][:accountable_type] == "Host"
          redirect_to new_host_path
-      elsif params[:account][:user_type] == "Guest" 
+      elsif params[:account][:accountable_type] == "Guest" 
          redirect_to new_guest_path
       else
          redirect_to root_path
@@ -24,7 +24,7 @@ class AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(:email, :password)
+    params.require(:account).permit(:email, :password, :accountable_type)
   end
 
 end
