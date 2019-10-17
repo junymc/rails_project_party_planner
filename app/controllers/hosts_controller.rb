@@ -22,8 +22,12 @@ class HostsController < ApplicationController
 
   def update
     @host = Host.find(session[:id])
-    @host = Host.update(host_params)
-    @host.save
+    if @host.update(host_params)
+       @host.save
+       redirect_to host_path
+    else
+      render :edit
+    end
   end
 
   def delete
