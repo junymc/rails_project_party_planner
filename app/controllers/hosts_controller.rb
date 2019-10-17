@@ -5,9 +5,10 @@ class HostsController < ApplicationController
 
   def create
     @host = Host.new(host_params)
+    @host.account = Account.find(session[:id])
     # binding.pry
-    if @host.save
-      session[:id] = @host.id
+    if @host.account.save
+     
       redirect_to parties_path
     else
       render :new

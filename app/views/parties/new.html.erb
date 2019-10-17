@@ -1,2 +1,14 @@
-<h1>Parties#new</h1>
-<p>Find me in app/views/parties/new.html.erb</p>
+<h1>Create a new Party</h1>
+<%= form_with (model: @party, local: true) do |f| %>
+  <%= f.label :name, "Party Name" %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :description, "Description" %>
+  <%= f.text_field :description %>
+  <br>
+  <%= f.label :location, "Location" %>
+  <%= f.text_field :location %>
+  <br>
+  <%= f.label :date_time, "Date & Time" %>
+  <%= f.
+

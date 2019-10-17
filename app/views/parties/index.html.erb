@@ -8,10 +8,13 @@
     <li>Location: <%= party.location %></li><br>
     <li>Date & Time: <%= party.date_time %></li><br>
     <li>Dress Code: <%= party.dress_code %></li><br>
-    <li>Hosted by: <%= party.host.name %></li><br>
-    </ul>
+   <!-- <li>Hosted by: <%= party.host.name %></li><br> -->
+  </ul>
 </div>
 <% end %>
 
 
 <%= link_to "Log Out", logout_path, :method => :delete %>
+<% if Account.all.last.accountable_type = "Host" %>
+<%= link_to "Create a new party", new_host_party_path(session[:id]) %>
+<% end %>
