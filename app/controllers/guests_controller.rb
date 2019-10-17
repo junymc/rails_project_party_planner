@@ -29,6 +29,8 @@ class GuestsController < ApplicationController
   end
 
   def delete
+    Guest.find(session[:id]).destroy
+    redirect_to root_path
   end
 
   private

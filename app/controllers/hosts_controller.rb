@@ -31,6 +31,8 @@ class HostsController < ApplicationController
   end
 
   def delete
+    Host.find(session[:id]).destroy
+    redirect_to root_path
   end
 
   private
