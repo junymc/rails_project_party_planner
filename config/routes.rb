@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   root to: 'welcome#root'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-
-  get '/logout' => 'sessions#logout'
   delete '/logout' => 'sessions#destroy'
   
   resources :guests do

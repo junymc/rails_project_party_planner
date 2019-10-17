@@ -1,11 +1,17 @@
 <h2>Party list</h2>
+
 <% @parties.each do |party| %>
-  <%= party.name %>
-  <%= party.description %>
-  <%= party.location %>
-  <%= party.date_time %>
-  <%= party.dress_code %>
-  <%= party.host %>
+<div class="boxed">
+  <ul>
+    <li>Party Name: <%= party.name %></li><br>
+    <li>Description: <%= party.description %></li><br>
+    <li>Location: <%= party.location %></li><br>
+    <li>Date & Time: <%= party.date_time %></li><br>
+    <li>Dress Code: <%= party.dress_code %></li><br>
+    <li>Hosted by: <%= party.host.name %></li><br>
+    </ul>
+</div>
 <% end %>
+
 
 <%= link_to "Log Out", logout_path, :method => :delete %>
