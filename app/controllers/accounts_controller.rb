@@ -5,10 +5,11 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(account_params)
-    # binding.pry
+    
     if @account.save
       session[:id] = @account.id
       session[:accountable_type] = params[:account][:accountable_type]
+      binding.pry
       if params[:account][:accountable_type] == "Host"
          redirect_to new_host_path
       elsif params[:account][:accountable_type] == "Guest" 

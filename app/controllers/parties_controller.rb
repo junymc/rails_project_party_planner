@@ -6,6 +6,7 @@ class PartiesController < ApplicationController
   end
 
   def new
+    @party = Party.new(party_params)
   end
 
   def create
@@ -18,5 +19,11 @@ class PartiesController < ApplicationController
   end
 
   def delete
+  end
+
+  private
+
+  def party_params
+    params.require(:party).permit(:name, :desciption, :location, :date_time, :dress_code, :host_id)
   end
 end

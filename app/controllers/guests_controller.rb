@@ -5,9 +5,10 @@ class GuestsController < ApplicationController
 
   def create
     @guest = Guest.new(guest_params)
+    @guest.account = Account.find(session[:id])
     # binding.pry
     if @guest.save
-      session[:id] = @guest.id
+      
       redirect_to parties_path
     else
       render :new

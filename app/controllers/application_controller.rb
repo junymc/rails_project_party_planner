@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    helper_method :current_account, :current_user, :user_type
 
 
     def verify_accountable
@@ -16,15 +17,22 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def current_account
+        Account.find_by(id: session[:id])
+    end
+
     def current_user
-        if session[:id]
-            @current_user ||= Account.find(session[:id])
-        else
-            @current_user = nil
+        if c = current_account
+            c.accountable
         end
     end
 
-    
+    def user_type
+        # binding.pry
+        if c = current_account
+            c.accountable_type
+        end
+    end
 
 
 end
