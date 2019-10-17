@@ -16,9 +16,14 @@ class HostsController < ApplicationController
   end
 
   def edit
+    @host = Host.find(session[:id])
+    
   end
 
   def update
+    @host = Host.find(session[:id])
+    @host = Host.update(host_params)
+    @host.save
   end
 
   def delete
