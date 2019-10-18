@@ -3,18 +3,20 @@
 <% @parties.each do |party| %>
 <div class="boxed">
   <ul>
-    <li>Party Name: <%= party.name %></li><br>
+    <li>Party Name: <%= link_to "party.name", party_path(party.id) %></li><br>
     <li>Description: <%= party.description %></li><br>
     <li>Location: <%= party.location %></li><br>
     <li>Date & Time: <%= party.date_time %></li><br>
     <li>Dress Code: <%= party.dress_code %></li><br>
-   <!-- <li>Hosted by: <%= party.host.name %></li><br> -->
+    <li>Hosted by: <%= party.host.name %></li><br>
   </ul>
 </div>
 <% end %>
 
 
+<% if current_user %>
 <%= link_to "Log Out", logout_path, :method => :delete %>
+<% end %>
 
 <% if user_type == "Host" %>
 <%= link_to "Create a new party", new_host_party_path(current_user.id) %>
