@@ -28,7 +28,6 @@ class ApplicationController < ActionController::Base
     end
 
     def user_type
-        # binding.pry
         if c = current_account
             c.accountable_type
         end
