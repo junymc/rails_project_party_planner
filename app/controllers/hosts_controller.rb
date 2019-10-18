@@ -9,7 +9,7 @@ class HostsController < ApplicationController
     @host.account = Account.find(session[:id])
     # session[:id] = @host.account.id
     if @host.save
-     binding.pry
+     
       redirect_to parties_path
     else
       render :new

@@ -6,10 +6,16 @@ class PartiesController < ApplicationController
   end
 
   def new
-    @party = Party.new(party_params)
+    @party = Party.new
   end
 
   def create
+    @party = Party.new(party_params)
+    if @party.save
+      redirect_to host_party_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,6 +30,6 @@ class PartiesController < ApplicationController
   private
 
   def party_params
-    params.require(:party).permit(:name, :desciption, :location, :date_time, :dress_code, :host_id)
+    params.require(:party).permit(:name, :description, :location, :date_time, :dress_code, :host_id)
   end
 end

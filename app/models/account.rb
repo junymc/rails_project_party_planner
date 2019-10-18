@@ -3,7 +3,8 @@ class Account < ApplicationRecord
     belongs_to :accountable, :polymorphic => true, optional: true
 
     validates :email, uniqueness: true
-    validates :email, :password, presence: true
-    validates :password, length: { in: 6..20 }
+    validates :email, presence: true
+    validates :password, presence: true, on: :create
+    validates :password, length: { in: 6..20 }, on: :create
 
 end

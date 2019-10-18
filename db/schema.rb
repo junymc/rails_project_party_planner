@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_234110) do
 
   create_table "invites", force: :cascade do |t|
     t.integer "guest_id"
-    t.integer "host_id"
+    t.integer "party_id"
     t.integer "add_on"
     t.boolean "rsvp"
     t.datetime "created_at", precision: 6, null: false

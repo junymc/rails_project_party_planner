@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root to: 'welcome#root'
   get '/login' => 'sessions#new'
@@ -16,5 +17,5 @@ Rails.application.routes.draw do
   resources :accounts, only: [:new, :create, :edit, :update, :delete]
   resources :parties, only: [:index]
   
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
 end
