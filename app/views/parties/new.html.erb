@@ -1,5 +1,5 @@
 <h1>Create a new Party</h1>
-<%= form_with model: @party, url: [@host, @party] do |f| %>
+<%= form_with model: @party, url: [@host, @party], local: true do |f| %>
   <%= f.label :name, "Party Name" %>
   <%= f.text_field :name %>
   <br>

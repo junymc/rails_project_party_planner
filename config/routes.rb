@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :accounts, only: [:new, :create, :edit, :update, :delete]
-  resources :parties, only: [:index]
+  resources :parties
   
   
 end

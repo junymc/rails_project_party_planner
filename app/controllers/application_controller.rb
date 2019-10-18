@@ -33,5 +33,10 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def host?
+        a = Account.find(session[:id])
+        redirect_to guest_path(a.accountable) if a.accountable_type != "Host" 
+    end
+
 
 end
