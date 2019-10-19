@@ -22,6 +22,14 @@ class AccountsController < ApplicationController
     end
   end
 
+  # def login_with_facebook
+  #     account = Account.create_with_omniauth(env[‘omniauth.auth’])
+  #     session[:id] = account.id    
+  #     redirect_to auth_login_path
+  #   end
+
+
+
   private
 
   def account_params
