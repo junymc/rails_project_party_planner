@@ -11,14 +11,18 @@ Rails.application.routes.draw do
 
   
   resources :guests do
-    resources :parties
+    resources :invites
+  end
+
+  resources :parties do
+    resources :invites
   end
 
   resources :hosts do
     resources :parties
   end
 
-  resources :accounts, only: [:new, :create, :edit, :update, :delete]
+  resources :accounts, only: [:new, :create]
   resources :parties
   
   

@@ -12,6 +12,10 @@ Hosted by: <%= @party.host.name %>
 <%= link_to "Edit Party", edit_host_party_path(@party) %>
 <% end %>
 
+<% if user_type == "Guest" %>
+<%= link_to "Join this party!", new_guest_invite_path(@guest) %>
+<% end %>
+
 <% if current_user %>
 <%= link_to "Log Out", logout_path, :method => :delete %>
 <% end %>

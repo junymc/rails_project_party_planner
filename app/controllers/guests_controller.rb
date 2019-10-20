@@ -15,23 +15,8 @@ class GuestsController < ApplicationController
     end
   end
 
-  def edit
-    @guest = Guest.find(session[:id])
-  end
-
-  def update
-    @guest = Guest.find(session[:id])
-    if @guest.update(guest_params)
-       @guest.save
-       redirect_to guest_path
-    else
-      render :edit
-    end
-  end
-
-  def delete
-    Guest.find(session[:id]).destroy
-    redirect_to root_path
+  def show
+    @guest = Guest.find(params[:id])
   end
 
   private

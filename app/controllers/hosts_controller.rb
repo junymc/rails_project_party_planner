@@ -14,27 +14,10 @@ class HostsController < ApplicationController
     else
       render :new
     end
-
   end
 
-  def edit
+  def show
     @host = Host.find(session[:id])
-    
-  end
-
-  def update
-    @host = Host.find(session[:id])
-    if @host.update(host_params)
-       @host.save
-       redirect_to host_path
-    else
-      render :edit
-    end
-  end
-
-  def delete
-    Host.find(session[:id]).destroy
-    redirect_to root_path
   end
 
   private
