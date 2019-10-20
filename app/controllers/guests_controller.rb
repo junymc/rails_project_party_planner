@@ -1,5 +1,6 @@
 class GuestsController < ApplicationController
   def new
+    session[:accountable_type] = "Guest"
     @guest = Guest.new
   end
 
@@ -17,6 +18,18 @@ class GuestsController < ApplicationController
   def show
     @guest = Guest.find(params[:id])
   end
+
+  # def invites_index
+  #   @guest = Guest.find(params[:id])
+  #   @invites = @guest.invites
+  #   render template: 'invites/index'
+  # end
+
+  # def invite
+  #   @guest = Guest.find(params[:id])
+  #   @invite = Invite.find(params[:id])
+  #   render template: 'invites/show'
+  # end
 
   private
 

@@ -1,14 +1,13 @@
 <h1>Join this Party!</h1>
 <p>Choose the options below to complete the process.</p>
 
-<%= @guest.party.name %>
 <br>
 <%= form_with model: @invite, url: [@guest, @invite], local: true do |f| %>
 <%= f.label :add_on, "Add On" %>
 <%= f.select :add_on, [1, 2, 3, 4], :prompt => 'Select One' %><br>
 
 <%= f.label :rsvp, "RSVP" %>
-<%= f.select :rsvp, [['Yes', true], ['No', false]] %>
+<%= f.select :rsvp, [['Yes', true], ['No', false]], :include_blank => true %>
 
 <%= f.submit "Join!" %>
 <% end %>

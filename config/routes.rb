@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root to: 'welcome#root'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  # get '/auth/facebook/callback' => 'accounts#login_with_facebook'
-  # get '/auth/failure' => 'welcome#root'
-  # get '/auth_login' => 'welcome#auth_login'
+  get '/auth/facebook/callback' => 'sessions#login_with_facebook'
+  get '/auth/failure' => 'welcome#root'
+  get '/auth_login' => 'welcome#auth_login'
   delete '/logout' => 'sessions#destroy'
 
   
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :accounts, only: [:new, :create]
   resources :parties
+  resources :invites
   
   
 end

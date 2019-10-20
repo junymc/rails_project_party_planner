@@ -1,15 +1,27 @@
 class InvitesController < ApplicationController
   def new
     @invite = Invite.new
-    
   end
 
   def create
-    @invite = Invite.create(invite_params)
-    @party = Party.find(params[:id])
-    @guest = Guest.find(params[:id])
-    @guest.party = @party
-    # binding.pry
+    @invite = Invite.new(invite_params)
+    if @invite.save
+       redirect_to guest_invites_path
+    else
+      render :new
+    end
+  end
+
+  def index
+    if params[:guest_id]
+      @invites = Guest.find(params[:guest_id]).invites
+    else
+      @invites = Invite.all
+    end
+  end
+
+  def show
+    @invite = Invite.find(params[:id])
   end
 
   def edit

@@ -24,6 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'sysrandom'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

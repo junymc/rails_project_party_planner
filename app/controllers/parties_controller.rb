@@ -1,4 +1,5 @@
 class PartiesController < ApplicationController
+ before_action :verify_accountable
  
   def index
     @parties = Party.all
@@ -33,7 +34,13 @@ class PartiesController < ApplicationController
   end
 
   def edit
-    find_party
+    if host?
+      find_party
+    else
+      flash[:danger] = "You have no access for this page."
+      render :show
+    end
+
   end
 
   def update

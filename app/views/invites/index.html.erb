@@ -1,0 +1,8 @@
+<h2>Invite List</h2>
+
+<% @invites.each do |invite| %>
+  <div>
+    <h2><%= link_to "#{invite.party.name}", party_path(invite.party) %></h2>
+    <p><%= invite.invite_party.description %></p>
+  </div>
+<% end %>

@@ -1,5 +1,6 @@
 class HostsController < ApplicationController
   def new
+    session[:accountable_type] = "Host"
     @host = Host.new
   end
 
