@@ -30,7 +30,6 @@ class PartiesController < ApplicationController
 
   def show
     find_party
-    @guest = Guest.find(params[:id])
   end
 
   def edit

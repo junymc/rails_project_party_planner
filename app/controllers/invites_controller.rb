@@ -9,7 +9,7 @@ class InvitesController < ApplicationController
     @party = Party.find(params[:id])
     @guest = Guest.find(params[:id])
     @guest.party = @party
-    binding.pry
+    # binding.pry
   end
 
   def edit

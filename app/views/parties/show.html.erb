@@ -8,12 +8,14 @@ Dress Code: <%= @party.dress_code %><br>
 Hosted by: <%= @party.host.name %>
 </div>
 
+<%= link_to "Back to Party List", parties_path %>
+
 <% if user_type == "Host" %>
 <%= link_to "Edit Party", edit_host_party_path(@party) %>
 <% end %>
 
 <% if user_type == "Guest" %>
-<%= link_to "Join this party!", new_guest_invite_path(@guest) %>
+<%= link_to "Join this party!", new_guest_invite_path(current_user) %>
 <% end %>
 
 <% if current_user %>
