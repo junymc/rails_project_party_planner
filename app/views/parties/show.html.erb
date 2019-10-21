@@ -15,7 +15,7 @@ Hosted by: <%= @party.host.name %>
 <% end %>
 
 <% if user_type == "Guest" %>
-<%= link_to "Join this party!", new_guest_invite_path(current_user) %>
+<%= link_to "Join this party!", new_party_invite_path(@party) %>
 <% end %>
 
 <% if current_user %>
