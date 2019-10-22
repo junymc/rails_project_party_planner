@@ -1,11 +1,15 @@
 <h2>Party list</h2>
 
 <% if user_type == "Host" %>
-<%= link_to "My Page", host_path(current_user.id) %>
+  <%= link_to "My Page", host_path(current_user.id) %>
+<% end %>
+
+<% if user_type == "Host" %>
+  <%= link_to "Create a new party", new_host_party_path(current_user.id) %>
 <% end %>
 
 <% if user_type == "Guest" %>
-<%= link_to "My Page", guest_path(current_user.id) %>
+  <%= link_to "My Page", guest_path(current_user.id) %>
 <% end %>
 
 <% @parties.each do |party| %>
@@ -19,13 +23,4 @@
     <li>Hosted by: <%= link_to "#{party.host.name}", host_path(party.host.id) %></li><br>
   </ul>
 </div>
-<% end %>
-
-
-<% if current_user %>
-<%= link_to "Log Out", logout_path, :method => :delete %>
-<% end %>
-
-<% if user_type == "Host" %>
-<%= link_to "Create a new party", new_host_party_path(current_user.id) %>
 <% end %>

@@ -9,5 +9,9 @@
     <li>Date & Time: <%= party.date_time %></li><br>
     <li>Dress Code: <%= party.dress_code %></li><br>
   </ul>
-</div>
 <% end %>
+
+<% if user_type == "Host" %>
+  <%= link_to "Edit Party", edit_host_party_path(@host, @party.id) %>
+<% end %>
+</div>

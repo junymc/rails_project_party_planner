@@ -9,7 +9,9 @@
       <a class="nav-item nav-link" href="/accounts/new">Signup</a>
       <a class="nav-item nav-link" href="/login">Login</a>
       <a class="nav-item nav-link" href="/auth/facebook">Login with Facebook</a>
-      <a class="nav-item nav-link" href="/logout">Logout</a>
+      <% if current_user %>
+        <a class="nav-item nav-link" href="/logout">Logout</a>
+      <% end %>
     </div>
   </div>
 </nav>

@@ -18,6 +18,3 @@ Hosted by: <%= @party.host.name %>
 <%= link_to "Join this party!", new_party_invite_path(@party) %>
 <% end %>
 
-<% if current_user %>
-<%= link_to "Log Out", logout_path, :method => :delete %>
-<% end %>
