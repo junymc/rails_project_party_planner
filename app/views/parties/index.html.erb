@@ -1,5 +1,13 @@
 <h2>Party list</h2>
 
+<% if user_type == "Host" %>
+<%= link_to "My Page", host_path(current_user.id) %>
+<% end %>
+
+<% if user_type == "Guest" %>
+<%= link_to "My Page", guest_path(current_user.id) %>
+<% end %>
+
 <% @parties.each do |party| %>
 <div class="boxed">
   <ul>
@@ -8,7 +16,7 @@
     <li>Location: <%= party.location %></li><br>
     <li>Date & Time: <%= party.date_time %></li><br>
     <li>Dress Code: <%= party.dress_code %></li><br>
-    <li>Hosted by: <%= party.host.name %></li><br>
+    <li>Hosted by: <%= link_to "#{party.host.name}", host_path(party.host.id) %></li><br>
   </ul>
 </div>
 <% end %>

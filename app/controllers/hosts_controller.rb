@@ -16,7 +16,9 @@ class HostsController < ApplicationController
   end
 
   def show
-    @host = Host.find(session[:id])
+    @host = Host.find(params[:id])
+    # binding.pry
+    @parties = Party.all.where(host_id: @host.id)
   end
 
   private
