@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#login_with_facebook'
   get '/auth/failure' => 'welcome#root'
   get '/auth_login' => 'welcome#auth_login'
+  get '/logout' => 'sessions#destroy'
   delete '/logout' => 'sessions#destroy'
 
   

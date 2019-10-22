@@ -25,6 +25,11 @@ gem 'pry'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'sysrandom'
+#using bootstrap
+gem 'bootstrap'
+gem 'jquery-rails'
+gem 'popper_js'
+gem 'tether-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
