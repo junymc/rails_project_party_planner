@@ -17,19 +17,8 @@ class GuestsController < ApplicationController
 
   def show
     @guest = Guest.find(params[:id])
+    @invites = Invite.all.where(guest_id: @guest.id)
   end
-
-  # def invites_index
-  #   @guest = Guest.find(params[:id])
-  #   @invites = @guest.invites
-  #   render template: 'invites/index'
-  # end
-
-  # def invite
-  #   @guest = Guest.find(params[:id])
-  #   @invite = Invite.find(params[:id])
-  #   render template: 'invites/show'
-  # end
 
   private
 

@@ -1,1 +1,7 @@
-<h2>My page</h2>
+<h2><%= "#{@guest.name}" %>'s Page</h2>
+
+<% @invites.each do |invite| %>
+<div class="boxed">
+  <%= link_to "#{invite.party.name}",  party_invite_path(invite.party.id, invite.id) %> - <%= invite.part.date_time %>
+</div>
+<% end %>
