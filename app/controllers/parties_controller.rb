@@ -34,24 +34,27 @@ class PartiesController < ApplicationController
   end
 
   def edit
-    if host?
-      find_party
-    else
-      flash[:danger] = "You have no access for this page."
-      render :show
-    end
-
-  end
-
-  def update
+    authorized_host?
     find_party
-    @party.update(party_params)
     if params[:host_id]
       find_host
       @party.host = @host
     end
-    redirect_to host_party_path(@party.host, @party)
-    
+  end
+
+  def update
+    if authorized_host?
+       find_party
+      @party.update(party_params)
+      if params[:host_id]
+        find_host
+        @party.host = @host
+      end
+      redirect_to host_party_path(@party.host, @party)
+    else
+      flash[:danger] = "You are not authorized to edit the party."
+      redirect_to parties_path
+    end
   end
 
   def delete

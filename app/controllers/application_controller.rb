@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_account, :current_user, :user_type
+    helper_method :current_account, :current_user, :user_type, :host?, :authorized_host?
 
 
     def verify_accountable
@@ -36,6 +36,11 @@ class ApplicationController < ActionController::Base
     def host?
         a = Account.find(session[:id])
         redirect_to guest_path(a.accountable) if a.accountable_type != "Host" 
+    end
+
+    def authorized_host?
+        id = current_user.id
+        id.to_s == params[:host_id]
     end
 
 
