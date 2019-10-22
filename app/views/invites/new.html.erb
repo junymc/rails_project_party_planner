@@ -9,7 +9,7 @@
 <%= f.label :rsvp, "RSVP" %>
 <%= f.select :rsvp, [['Yes', true], ['No', false]], :include_blank => true %>
 
-<%= f.hidden_field :party_id, :value => @party_id %>
+<%= hidden_field_tag :party_id, @party_id %>
 
 <%= f.submit "Join!" %>
 <% end %>

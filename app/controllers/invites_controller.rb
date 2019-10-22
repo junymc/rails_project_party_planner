@@ -3,12 +3,13 @@ class InvitesController < ApplicationController
   def new
     @invite = Invite.new
     @party_id = params[:party_id]
-    # binding.pry
   end
 
   def create
+    @party = Party.find(params[:party_id])
     @invite = Invite.new(invite_params)
-  #  binding.pry
+    @invite.guest = current_user
+    @invite.party = @party
     if @invite.save
        redirect_to guest_invites_path(current_user)
     else
@@ -47,7 +48,7 @@ class InvitesController < ApplicationController
   private
 
   def invite_params
-    params.require(:invite).permit(:add_on, :rsvp, :guest, :party_id)
+    params.require(:invite).permit(:add_on, :rsvp, :guest)
   end
 
   def find_invite
