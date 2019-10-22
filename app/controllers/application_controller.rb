@@ -39,8 +39,12 @@ class ApplicationController < ActionController::Base
     end
 
     def authorized_host?
-        id = current_user.id
-        id.to_s == params[:host_id]
+        if current_user
+           id = current_user.id
+           id.to_s == params[:host_id]
+        else
+            redirect_to parties_path
+        end
     end
 
 

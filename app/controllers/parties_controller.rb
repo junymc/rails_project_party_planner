@@ -58,6 +58,7 @@ class PartiesController < ApplicationController
   end
 
   def delete
+    authorized_host?
     find_party
     @party.destroy
     redirect_to parties_path
