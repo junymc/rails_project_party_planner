@@ -47,6 +47,16 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def authorized_guest?
+        binding.pry
+        if current_user
+           id = current_user.id
+           id.to_s == params[:guest_id]
+        else
+            redirect_to parties_path
+        end
+    end
+
     def logged_in?
         current_user != nil
     end

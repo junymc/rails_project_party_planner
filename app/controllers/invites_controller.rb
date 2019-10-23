@@ -21,7 +21,6 @@ class InvitesController < ApplicationController
   def index
     if params[:guest_id]
       @invites = Guest.find(params[:guest_id]).invites
-      
     else
       @invites = Invite.all
     end
@@ -36,6 +35,7 @@ class InvitesController < ApplicationController
   end
 
   def update
+    authorized_guest?
     find_invite
     @invite.update(invite_params)
     @invite.save
@@ -43,6 +43,10 @@ class InvitesController < ApplicationController
   end
 
   def delete
+    authorized_guest?
+    find_invite
+    @invite.destroy
+    redirect_to guest_invites_path(current_user)
   end
 
   private

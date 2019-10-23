@@ -1,1 +1,11 @@
-<h2>invite</h2>
+<h2>My Party</h2>
+<div class="boxed">
+Party Name : <%= @invite.party.name %><br>
+Description : <%= @invite.party.description %><br>
+Location : <%= @invite.party.location %><br>
+Date & Time : <%= @invite.party.date_time %><br>
+Dress Code<%= @invite.party.dress_code %><br>
+How many people am I bringing with? : <%= @invite.add_on %><br>
+RSVP status : <%= @invite.rsvp %><br>
+  <%= link_to "Delete", guest_invites_path(current_user), method: :delete %>
+</div>

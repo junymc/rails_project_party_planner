@@ -11,7 +11,7 @@
   </ul>
 <% end %>
 
-<% if user_type == "Host" %>
+<% if user_type == "Host" && @party %>
   <%= link_to "Edit Party", edit_host_party_path(@host, @party.id) %>
 <% end %>
 </div>

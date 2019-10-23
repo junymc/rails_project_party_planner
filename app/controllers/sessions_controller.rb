@@ -36,7 +36,6 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete(:id)
-        session[:id] = nil
         flash[:success] = "Goodbye!"
         redirect_to root_path
     end

@@ -3,9 +3,10 @@
 <% @invites.each do |invite| %>
 <div>
     <ul>
-      <li><p><%= link_to "#{invite.party.name}", party_path(invite.party) %> 
+      <li><p><%= link_to "#{invite.party.name}", guest_invite_path(@guest, invite) %> 
       - <%= invite.party.description %> 
       - Hosted by : <%= link_to "#{invite.party.host.name}", host_path(invite.party.host) %></p></li>
     </ul>
   </div>
 <% end %>
+
