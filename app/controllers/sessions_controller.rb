@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 			
             redirect_to parties_path
         else
-            flash[:danger] = "Login credentials were not found, please try again."
+            flash[:danger] = "Somthing went wrong, please try again."
             redirect_to login_path
         end
     end
@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete(:id)
-        # session[:id] = nil
+        session[:id] = nil
         flash[:success] = "Goodbye!"
         redirect_to root_path
     end

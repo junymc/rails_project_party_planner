@@ -9,6 +9,13 @@
     <%= f.label :guest %>
     <%= f.radio_button :accountable_type, 'Guest' %>
 </div>
+
+<% if @account.errors.any? %>
+   <% @account.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+   <% end %>
+ <% end %>
+
 <br>
 <div class="field">
     <%= f.label :email %><br />
@@ -22,3 +29,5 @@
 
     <%= f.submit %>
   <% end %>
+
+  

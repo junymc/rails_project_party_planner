@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_191305) do
     t.integer "guest_id"
     t.integer "party_id"
     t.integer "add_on"
-    t.boolean "rsvp"
+    t.boolean "rsvp", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

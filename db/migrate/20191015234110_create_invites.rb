@@ -4,7 +4,7 @@ class CreateInvites < ActiveRecord::Migration[6.0]
       t.integer :guest_id
       t.integer :party_id
       t.integer :add_on
-      t.boolean :rsvp
+      t.boolean :rsvp, default: true
 
       t.timestamps
     end

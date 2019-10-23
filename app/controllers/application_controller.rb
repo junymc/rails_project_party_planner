@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_account, :current_user, :user_type, :host?, :authorized_host?
+    helper_method :current_account, :current_user, :user_type, :host?, :authorized_host?, :logged_in?
 
 
     def verify_accountable
@@ -47,5 +47,8 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def logged_in?
+        current_user != nil
+    end
 
 end
