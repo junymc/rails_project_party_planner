@@ -11,9 +11,15 @@
   </ul>
 <% end %>
 
-<% if user_type == "Host" && @party %>
+<% if user_type == "Host" && @host == current_user %>
   <%= link_to "Edit Party", edit_host_party_path(@host, @party.id) %>
 <% end %>
+
+<% if user_type == "Host" && @host == current_user %>
+  <%= form_tag party_path(@party.id), method: "delete" do %>
+    <%= submit_tag "Delete Party" %>
+  <% end %>
+<% end %>   
 </div>
 
 <%= link_to "Back to Party List", parties_path %>
