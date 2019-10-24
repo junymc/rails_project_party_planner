@@ -54,7 +54,7 @@ class PartiesController < ApplicationController
   end
 
   def destroy
-    if current_user == @host
+    if current_user == @party.host
       @party.destroy
       redirect_to host_path(current_user)
     else
