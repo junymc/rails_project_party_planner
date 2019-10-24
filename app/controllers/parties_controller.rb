@@ -1,6 +1,6 @@
 class PartiesController < ApplicationController
  before_action :verify_accountable
- before_action :find_party, :party_host, only: [:edit, :update, :delete]
+ before_action :find_party, :party_host, only: [:edit, :update, :destroy]
  
   def index
     @parties = Party.all
@@ -53,10 +53,10 @@ class PartiesController < ApplicationController
       end
   end
 
-  def delete
+  def destroy
     if current_user == @host
       @party.destroy
-      redirect_to parties_path
+      redirect_to host_path(current_user)
     else
       flash[:danger] = "You are not an authorized user."
       redirect_to parties_path

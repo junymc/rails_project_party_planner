@@ -14,6 +14,10 @@ Hosted by: <%= @party.host.name %>
 <%= link_to "Edit Party", edit_host_party_path(@party) %>
 <% end %>
 
+<% if user_type == "Host" && @party.host == current_user %>
+<%= link_to "Delete Party", party_path(@party), method: :delete %>
+<% end %>
+
 <% if user_type == "Guest" %>
 <%= link_to "Join this party!", new_party_invite_path(@party) %>
 <% end %>
