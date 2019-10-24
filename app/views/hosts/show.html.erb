@@ -11,11 +11,11 @@
   </ul>
 <% end %>
 
-<% if user_type == "Host" && @host == current_user %>
+<% if user_type == "Host" && @host == current_user && @party != nil %>
   <%= link_to "Edit Party", edit_host_party_path(@host, @party.id) %>
 <% end %>
 
-<% if user_type == "Host" && @host == current_user %>
+<% if user_type == "Host" && @host == current_user && @party != nil %>
   <%= form_tag party_path(@party.id), method: "delete" do %>
     <%= submit_tag "Delete Party" %>
   <% end %>

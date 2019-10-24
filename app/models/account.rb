@@ -9,22 +9,16 @@ class Account < ApplicationRecord
     # validates :password, length: { in: 6..30 }, on: :create
 
     def self.create_with_omniauth(auth)
-        account = find_or_create_by(uid: auth['uid'], provider:  auth['provider'])
-        account.email = "#{auth['uid']}@#{auth['provider']}.com"
-        account.password = Sysrandom.hex(30)
+        @account = find_or_create_by(uid: auth['uid'], provider:  auth['provider'])
+        @account.email = "#{auth['uid']}@#{auth['provider']}.com"
+        @account.password = Sysrandom.hex(30)
         
-        if Account.exists?(account.id)
-          account
+        if Account.exists?(@account.id)
+          @account
         else
-          account.save!
-          account
+          @account.save!
+          @account
         end
     end
 
-    # private
-
-    # def auth
-    #    request.env['omniauth.auth']
-    # end
-    
 end

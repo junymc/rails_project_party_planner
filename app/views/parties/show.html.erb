@@ -10,17 +10,17 @@ Hosted by: <%= @party.host.name %>
 
 <%= link_to "Back to Party List", parties_path %>
 
-<% if user_type == "Host" && @party.host == current_user %>
+<% if user_type == "Host" && @party.host == current_user && @party != nil %>
   <%= link_to "Edit Party", edit_host_party_path(@party) %>
 <% end %>
 
-<% if user_type == "Host" && @party.host == current_user %>
+<% if user_type == "Host" && @party.host == current_user && @pqrty != nil %>
   <%= form_tag party_path(@party), method: "delete" do %>
     <%= submit_tag "Delete Party" %>
   <% end %>
 <% end %>
 
-<% if user_type == "Guest" %>
+<% if user_type == "Guest" && if already_joined.include(@party.id)%>
   <%= link_to "Join this party!", new_party_invite_path(@party) %>
 <% end %>
 

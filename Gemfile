@@ -27,7 +27,7 @@ gem 'omniauth-facebook'
 gem 'sysrandom'
 #using bootstrap
 gem 'bootstrap'
-gem 'jquery-rails'
+# gem 'jquery-rails'
 gem 'popper_js'
 gem 'tether-rails'
 

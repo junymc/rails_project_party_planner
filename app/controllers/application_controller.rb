@@ -34,8 +34,7 @@ class ApplicationController < ActionController::Base
     end
 
     def host?
-        a = Account.find(session[:id])
-        redirect_to guest_path(a.accountable) if a.accountable_type != "Host" 
+        return current_user.accountable_type == "Host"
     end
 
     def logged_in?
