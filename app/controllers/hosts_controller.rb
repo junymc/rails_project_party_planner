@@ -17,7 +17,6 @@ class HostsController < ApplicationController
 
   def show
     @host = Host.find(params[:id])
-    # binding.pry
     @parties = Party.all.where(host_id: @host.id)
     @party = Party.find_by(host_id: @host.id)
   end

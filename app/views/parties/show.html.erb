@@ -10,7 +10,7 @@ Hosted by: <%= @party.host.name %>
 
 <%= link_to "Back to Party List", parties_path %>
 
-<% if user_type == "Host" %>
+<% if user_type == "Host" && @party.host == current_user %>
 <%= link_to "Edit Party", edit_host_party_path(@party) %>
 <% end %>
 

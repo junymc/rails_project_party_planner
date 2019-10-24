@@ -1,5 +1,6 @@
 class PartiesController < ApplicationController
  before_action :verify_accountable
+ before_action :find_party, :party_host, only: [:edit, :update, :delete]
  
   def index
     @parties = Party.all
@@ -34,34 +35,32 @@ class PartiesController < ApplicationController
   end
 
   def edit
-    authorized_host?
-    find_party
-    if params[:host_id]
-      find_host
-      @party.host = @host
+    if current_user == @host
+      render :edit
+    else
+      flash[:danger] = "You are not an authorized user."
+      redirect_to party_path(@party)
     end
   end
 
   def update
-    if authorized_host?
-       find_party
-      @party.update(party_params)
-      if params[:host_id]
-        find_host
-        @party.host = @host
+      if current_user == @host
+        @party.update(party_params)
+        redirect_to host_party_path(@party.host, @party)
+      else
+        flash[:danger] = "You are not an authorized user."
+        redirect_to parties_path
       end
-      redirect_to host_party_path(@party.host, @party)
-    else
-      flash[:danger] = "You are not authorized to edit the party."
-      redirect_to parties_path
-    end
   end
 
   def delete
-    authorized_host?
-    find_party
-    @party.destroy
-    redirect_to parties_path
+    if current_user == @host
+      @party.destroy
+      redirect_to parties_path
+    else
+      flash[:danger] = "You are not an authorized user."
+      redirect_to parties_path
+    end
   end
 
   private
@@ -76,5 +75,12 @@ class PartiesController < ApplicationController
 
   def find_host
     @host = Host.find(params[:host_id])
+  end
+
+  def party_host
+    if params[:host_id]
+      find_host
+      @party.host = @host
+    end
   end
 end
