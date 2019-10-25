@@ -1,4 +1,4 @@
-# rails_project_party_planner
+# rails project party planner
 
 My project is a simple app for party hosts and guests. Hosts can create parties and guests can join the parties from the party list.
 
@@ -23,7 +23,7 @@ $ rails db:migrate
 You can run the server locally with the command below:
 ```
 $ rails s
-``
+```
 Open your browser and go to `localhost:3000`.
 
 ## Authors
