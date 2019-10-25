@@ -7,6 +7,11 @@ Date & Time : <%= @invite.party.date_time %><br>
 Dress Code<%= @invite.party.dress_code %><br>
 How many people am I bringing with? : <%= @invite.add_on %><br>
 RSVP status : <%= @invite.rsvp %><br>
+
+  <% if user_type == "Guest" && @invite.guest == current_user && @invite != nil %>
+      <%= link_to "Edit this invite", edit_guest_invite_path(current_user, @invite) %>
+  <% end %>
+
   <% if user_type == "Guest" && @invite.guest == current_user %>
       <%= form_tag guest_invite_path(@invite.guest, @invite.id), method: "delete" do %>
         <%= submit_tag "Delete Party" %>

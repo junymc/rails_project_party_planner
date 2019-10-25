@@ -38,7 +38,7 @@ class InvitesController < ApplicationController
     find_invite
     @invite.update(invite_params)
     @invite.save
-    redirect_to invites_path
+    redirect_to guest_path(current_user)
   end
 
   def destroy

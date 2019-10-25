@@ -20,7 +20,7 @@ Hosted by: <%= @party.host.name %>
   <% end %>
 <% end %>
 
-<% if user_type == "Guest" && if already_joined.include(@party.id)%>
+<% if user_type == "Guest" && if !already_joined %>
   <%= link_to "Join this party!", new_party_invite_path(@party) %>
 <% end %>
 

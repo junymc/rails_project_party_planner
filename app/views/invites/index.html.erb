@@ -1,11 +1,11 @@
-<h1>Invite List</h1>
+<h2>Invite List</h2>
 
 <% @invites.each do |invite| %>
-  <div>
+<div>
     <ul>
-      <li><h3><%= link_to "#{invite.id}", guest_invite_path(@guest, invite.id) %>. <%= link_to "#{invite.party.name}", party_path(invite.party) %> 
+      <li><p><%= link_to "#{invite.party.name}", guest_invite_path(invite.guest, invite) %> 
       - <%= invite.party.description %> 
-      - Hosted by : <%= link_to "#{invite.party.host.name}", host_path(invite.party.host) %></h3></li>
+      - Hosted by : <%= link_to "#{invite.party.host.name}", host_path(invite.party.host) %></p></li>
     </ul>
   </div>
 <% end %>
