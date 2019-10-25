@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
         else
             current_account
             current_account && current_account.authenticate(params[:password])
-            session[:id] = @account.accountable.id
+            session[:id] = @account.id
             redirect_to account_path(@account)
           end
     end
