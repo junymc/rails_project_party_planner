@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root to: 'welcome#root'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  get '/auth/facebook/callback' => 'sessions#login_with_facebook'
-  get '/auth/failure' => 'welcome#root'
+  get 'auth/:provider/callback', to: 'sessions#googleAuth'
+  get 'auth/failure', to: redirect('/')
   get '/auth_login' => 'welcome#auth_login'
   get '/logout' => 'sessions#destroy'
   delete '/logout' => 'sessions#destroy'

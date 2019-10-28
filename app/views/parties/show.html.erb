@@ -14,7 +14,7 @@ Hosted by: <%= @party.host.name %>
   <%= link_to "Edit Party", edit_host_party_path(@party) %>
 <% end %>
 
-<% if user_type == "Host" && @party.host == current_user && @pqrty != nil %>
+<% if user_type == "Host" && @party.host == current_user && @party != nil %>
   <%= form_tag party_path(@party), method: "delete" do %>
     <%= submit_tag "Delete Party" %>
   <% end %>

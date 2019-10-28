@@ -8,17 +8,13 @@ class Account < ApplicationRecord
     validates :password, presence: true, on: :create
     # validates :password, length: { in: 6..30 }, on: :create
 
-    def self.create_with_omniauth(auth)
-        @account = find_or_create_by(uid: auth['uid'], provider:  auth['provider'])
-        @account.email = "#{auth['uid']}@#{auth['provider']}.com"
-        @account.password = Sysrandom.hex(30)
-        
-        if Account.exists?(@account.id)
-          @account
-        else
-          @account.save!
-          @account
-        end
+
+    def self.from_omniauth(auth)
+      # Creates a new user only if it doesn't exist
+      where(email: auth.info.email).first_or_initialize do |account|
+        account.email = auth.info.email
+        account.password = Sysrandom.hex(30)
+      end
     end
 
 end
