@@ -32,18 +32,28 @@ class InvitesController < ApplicationController
 
   def edit
     find_invite
+    if current_user == @invite.guest
+      render :edit
+    else
+      flash[:danger] = "You are not an authorized user."
+      redirect_to parties_path
+    end
   end
 
   def update
     find_invite
-    @invite.update(invite_params)
-    @invite.save
-    redirect_to guest_path(current_user)
+    if current_user == @invite.guest
+      @invite.update(invite_params)
+      redirect_to guest_path(current_user)
+    else
+      flash[:danger] = "You are not an authorized user."
+      redirect_to parties_path
+    end
   end
 
   def destroy
     find_invite
-    if @invite.guest == current_user
+    if current_user == @invite.guest
       @invite.destroy
       redirect_to guest_path(current_user)
     else

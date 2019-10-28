@@ -35,7 +35,7 @@ class PartiesController < ApplicationController
   end
 
   def edit
-    @invite = Invite.where(party_id: @party.id)
+    # @invite = Invite.where(party_id: @party.id)
     if current_user == @host
       render :edit
     else
