@@ -3,7 +3,7 @@
 Party Name: <%= @party.name %><br>
 Description: <%= @party.description %><br>
 Location: <%= @party.location %><br>
-Date & Time: <%= @party.date_time %><br>
+Date & Time: <%= @party.strf_time %><br>
 Dress Code: <%= @party.dress_code %><br>
 Hosted by: <%= @party.host.name %>
 </div>
@@ -11,7 +11,7 @@ Hosted by: <%= @party.host.name %>
 <%= link_to "Back to Party List", parties_path %>
 
 <% if user_type == "Host" && @party.host == current_user && @party != nil %>
-  <%= link_to "Edit Party", edit_host_party_path(@party) %>
+  <%= link_to "Edit Party", edit_host_party_path(current_user, @party) %>
 <% end %>
 
 <% if user_type == "Host" && @party.host == current_user && @party != nil %>

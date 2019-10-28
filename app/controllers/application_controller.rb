@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def log_in(account)
+        session[:id] = account.id
+    end
+
     def current_account
         Account.find_by(id: session[:id])
     end
@@ -34,7 +38,7 @@ class ApplicationController < ActionController::Base
     end
 
     def host?
-        return current_user.accountable_type == "Host"
+        current_account.accountable_type == "Host"
     end
 
     def logged_in?
