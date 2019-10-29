@@ -1,5 +1,5 @@
 class InvitesController < ApplicationController
-
+  before_action :find_invite, only: [:show, :edit, :update, :destroy]
   def new
     @invite = Invite.new
     @party_id = params[:party_id]
@@ -27,12 +27,11 @@ class InvitesController < ApplicationController
   end
 
   def show
-    find_invite
+  
   end
 
   def edit
-    find_invite
-    if current_user == @invite.guest
+    if authorized_guest
       render :edit
     else
       flash[:danger] = "You are not an authorized user."
@@ -41,8 +40,7 @@ class InvitesController < ApplicationController
   end
 
   def update
-    find_invite
-    if current_user == @invite.guest
+    if authorized_guest
       @invite.update(invite_params)
       redirect_to guest_path(current_user)
     else
@@ -52,8 +50,7 @@ class InvitesController < ApplicationController
   end
 
   def destroy
-    find_invite
-    if current_user == @invite.guest
+    if authorized_guest
       @invite.destroy
       redirect_to guest_path(current_user)
     else
@@ -70,6 +67,10 @@ class InvitesController < ApplicationController
 
   def find_invite
     @invite = Invite.find(params[:id])
+  end
+
+  def authorized_guest
+    current_user == @invite.guest
   end
 
 end

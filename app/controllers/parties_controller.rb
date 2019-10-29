@@ -35,8 +35,7 @@ class PartiesController < ApplicationController
   end
 
   def edit
-    # @invite = Invite.where(party_id: @party.id)
-    if current_user == @host
+    if authorized_host
       render :edit
     else
       flash[:danger] = "You are not an authorized user."
@@ -45,7 +44,7 @@ class PartiesController < ApplicationController
   end
 
   def update
-      if current_user == @host
+      if authorized_host
         @party.update(party_params)
         redirect_to host_party_path(@party.host, @party)
       else
@@ -55,7 +54,8 @@ class PartiesController < ApplicationController
   end
 
   def destroy
-    if current_user == @party.host
+    @host = @party.host
+    if authorized_host
       @party.destroy
       redirect_to host_path(current_user)
     else
@@ -84,4 +84,9 @@ class PartiesController < ApplicationController
       @party.host = @host
     end
   end
+
+  def authorized_host
+    current_user == @host
+  end
+
 end

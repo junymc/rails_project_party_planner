@@ -14,8 +14,6 @@ class AccountsController < ApplicationController
          redirect_to new_host_path
       elsif params[:account][:accountable_type] == "Guest" 
          redirect_to new_guest_path
-      else
-         redirect_to root_path
       end
     else
       render :new
