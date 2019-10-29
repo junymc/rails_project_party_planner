@@ -1,5 +1,6 @@
 class InvitesController < ApplicationController
   before_action :find_invite, only: [:show, :edit, :update, :destroy]
+  
   def new
     @invite = Invite.new
     @party_id = params[:party_id]

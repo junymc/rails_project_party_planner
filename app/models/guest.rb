@@ -4,4 +4,5 @@ class Guest < ApplicationRecord
     has_many :parties, through: :invites
 
     validates :name, :age, presence: true
+    validates :age, numericality: { greater_than: 20, less_than: 90}
 end

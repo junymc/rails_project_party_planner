@@ -1,20 +1,6 @@
 <h1>Create a new Party</h1>
-<%= form_with model: @party, url: [@host, @party], local: true do |f| %>
-  <%= f.label :name, "Party Name" %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :description, "Description" %>
-  <%= f.text_area :description %>
-  <br>
-  <%= f.label :location, "Location" %>
-  <%= f.text_field :location %>
-  <br>
-  <%= f.label :date_time, "Date & Time" %>
-  <%= f.datetime_select :date_time, prompt: {minute: 'M', hour: 'H', day: 'Day', month: 'Month', year: 'Year'} %>
-  <br>
-  <%= f.label :dress_code, "Dress Code" %>
-  <%= f.text_field :dress_code %>
+<%= render 'partials/party' %>
   <br>
   <%= f.submit "Creat a new Party" %>
-  <% end %>
+<% end %>
 

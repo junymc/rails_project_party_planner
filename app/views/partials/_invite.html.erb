@@ -1,0 +1,8 @@
+<%= form_with model: @invite, url: [@party, @invite], local: true do |f| %>
+<%= f.label :add_on, "Add On" %>
+<%= f.select :add_on, [1, 2, 3, 4], :prompt => 'Select One' %><br>
+
+<%= f.label :rsvp, "RSVP" %>
+<%= f.select :rsvp, [['Yes', true], ['No', false]], :include_blank => true %>
+
+<%= hidden_field_tag :party_id, @party_id %>
