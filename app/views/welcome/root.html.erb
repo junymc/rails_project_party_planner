@@ -1,19 +1,28 @@
 <% if !logged_in? %>
   <h1>Welcome to Party Planner!</h1>
-  <h2>Sign up or Log In</h2>
+  <h3>Sign up or Log In</h3>
 <% end %>
 
 <% if logged_in? %>
-<% @parties.each do |party| %>
-<div class="boxed">
-  <ul>
-    <li>Party Name: <%= link_to "#{party.name}", party_path(party.id) %></li><br>
-    <li>Description: <%= party.description %></li><br>
-    <li>Location: <%= party.location %></li><br>
-    <li>Date & Time: <%= party.date_time %></li><br>
-    <li>Dress Code: <%= party.dress_code %></li><br>
-    <li>Hosted by: <%= link_to "#{party.host.name}", host_path(party.host.id) %></li><br>
-  </ul>
-</div>
+
+<% if user_type == "Host" %>
+  <%= link_to "My Page", host_path(current_user.id) %>
 <% end %>
+
+<% if user_type == "Guest" %>
+  <%= link_to "My Page", guest_path(current_user.id) %>
+<% end %>
+
+  <% @parties.each do |party| %>
+  <div class="boxed">
+    <ul>
+      <li>Party Name: <%= link_to "#{party.name}", party_path(party.id) %></li>
+      <li>Description: <%= party.description %></li>
+      <li>Location: <%= party.location %></li>
+      <li>Date & Time: <%= party.date_time %></li>
+      <li>Dress Code: <%= party.dress_code %></li>
+      <li>Hosted by: <%= link_to "#{party.host.name}", host_path(party.host.id) %></li>
+    </ul>
+  </div>
+  <% end %>
 <% end %>

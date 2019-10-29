@@ -1,11 +1,13 @@
 
 <div class="boxed">
-Party Name: <%= @party.name %><br>
-Description: <%= @party.description %><br>
-Location: <%= @party.location %><br>
-Date & Time: <%= @party.strf_time %><br>
-Dress Code: <%= @party.dress_code %><br>
-Hosted by: <%= @party.host.name %>
+<ul>
+  <li>Party Name: <%= @party.name %></li>
+  <li>Description: <%= @party.description %></li>
+  <li>Location: <%= @party.location %></li>
+  <li>Date & Time: <%= @party.strf_time %></li>
+  <li>Dress Code: <%= @party.dress_code %></li>
+  <li>Hosted by: <%= @party.host.name %></li>
+<ul>
 </div>
 
 <%= link_to "Back to Party List", parties_path %>
