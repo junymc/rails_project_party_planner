@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
     if logged_in?
       redirect_to parties_path
     else
-      redirect_to new_account_path
+      render :new
     end
     @account = Account.new
   end

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
         if logged_in?
             redirect_to parties_path
         else
-            redirect_to login_path
+            render :new
         end
     end
 
