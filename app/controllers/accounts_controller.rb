@@ -1,10 +1,5 @@
 class AccountsController < ApplicationController
   def new
-    if logged_in?
-      redirect_to parties_path
-    else
-      render :new
-    end
     @account = Account.new
   end
 
@@ -13,13 +8,16 @@ class AccountsController < ApplicationController
     
     if @account.save
       session[:id] = @account.id
-      session[:accountable_type] = params[:account][:accountable_type]
-      
-      if params[:account][:accountable_type] == "Host"
-         redirect_to new_host_path
-      elsif params[:account][:accountable_type] == "Guest" 
-         redirect_to new_guest_path
-      end
+      if params[:account][:accountable_type] == nil
+        flash[:danger] = "You need to choose either 'Host' or 'Guest'."
+      else
+        session[:accountable_type] = params[:account][:accountable_type]
+        if params[:account][:accountable_type] == "Host"
+           redirect_to new_host_path
+        elsif params[:account][:accountable_type] == "Guest" 
+           redirect_to new_guest_path
+        end
+      end  
     else
       render :new
     end

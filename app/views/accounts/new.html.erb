@@ -21,7 +21,13 @@
     <%= f.password_field :password %>
   </div>
 
-    <%= f.submit %>
+  <% if @account.errors.any? %>
+    <% @account.errors.full_messages.each do |m| %>
+      <p class="danger"><%= m %></p>
+    <% end %>
+  <% end %>
+
+    <%= f.submit "Create" %>
   <% end %>
 
   

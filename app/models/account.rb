@@ -5,7 +5,7 @@ class Account < ApplicationRecord
     validates :email, uniqueness: true
     validates :email, presence: true
     validates :password, presence: true, on: :create
-    validates :accountable_type, presence: true
+    # validates :accountable_type, presence: true
     # validates :password, length: { in: 6..30 }, on: :create
 
 
