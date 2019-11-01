@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
     helper_method :current_account, :current_user, :user_type, :host?, :logged_in?
 
+    rescue_from ActiveRecord::RecordNotFound, :with => :rescue404
+    rescue_from ActionController::RoutingError, :with => :rescue404
+
 
     def verify_accountable
         # get the account from session
@@ -44,5 +47,16 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !!current_user
     end
+
+    private
+
+    def rescue404
+        render(:file => File.join(Rails.root, 'public/404.html'), :status => 404, :layout => false)
+    end
+
+    def rescue403
+        render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+    end
+
 
 end
