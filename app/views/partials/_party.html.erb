@@ -16,3 +16,9 @@
     <br>
   <%= f.submit %>
 <% end %>
+
+<% if @party.errors.any? %>
+  <% @party.errors.full_messages.each do |m| %>
+    <p class="danger"><%= m %></p>
+  <% end %>
+<% end %>

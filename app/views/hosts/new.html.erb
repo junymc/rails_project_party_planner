@@ -8,3 +8,9 @@
 
 <%= f.submit "Create an account as a host" %>
 <% end %>
+
+<% if @host.errors.any? %>
+  <% @host.errors.full_messages.each do |m| %>
+    <p class="danger"><%= m %></p>
+  <% end %>
+<% end %>
