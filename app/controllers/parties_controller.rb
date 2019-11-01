@@ -4,7 +4,6 @@ class PartiesController < ApplicationController
  
   def index
     @parties = Party.all
-    
   end
 
   def new
@@ -44,13 +43,13 @@ class PartiesController < ApplicationController
   end
 
   def update
-      if authorized_host
-        @party.update(party_params)
-        redirect_to host_party_path(@party.host, @party)
-      else
-        flash[:danger] = "You are not an authorized user."
-        redirect_to parties_path
-      end
+    if authorized_host
+      @party.update(party_params)
+      redirect_to host_party_path(@party.host, @party)
+    else
+      flash[:danger] = "You are not an authorized user."
+      redirect_to parties_path
+    end
   end
 
   def destroy

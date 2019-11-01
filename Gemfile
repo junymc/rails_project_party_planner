@@ -26,7 +26,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'sysrandom'
 #using bootstrap
-gem 'bootstrap'
+gem 'bootstrap','~> 4.3.1'
 # gem 'jquery-rails'
 gem 'popper_js'
 gem 'tether-rails'
