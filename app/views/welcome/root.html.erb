@@ -13,6 +13,8 @@
   <%= link_to "My Page", guest_path(current_user.id) %>
 <% end %>
 
+<%= link_to "Check out the host who has most parties", best_host_path %>
+
   <% @parties.each do |party| %>
   <div class="boxed">
     <ul>
@@ -26,3 +28,4 @@
   </div>
   <% end %>
 <% end %>
+

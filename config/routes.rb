@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get '/auth_login' => 'welcome#auth_login'
   get '/logout' => 'sessions#destroy'
   delete '/logout' => 'sessions#destroy'
-
+  
+  get '/best_host' => 'welcome#best_host'
   
   resources :guests do
     resources :invites
