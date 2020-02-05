@@ -7,7 +7,7 @@ Build a Rails application that uses:
 
   - Nested RESTful routes
   - ActiveRecord(Associations, Polymorphism)
-  - Omniauth - facebook
+  - Omniauth - Google
   - Singup/Login/Logout
 
 ## instructions
